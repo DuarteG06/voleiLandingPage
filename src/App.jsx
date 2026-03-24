@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 
 const links = [
@@ -5,20 +6,31 @@ const links = [
     title: 'Volleyball Scoreboard',
     url: 'https://scoreboard.volei.pt',
     displayUrl: 'scoreboard.volei.pt',
+    description: 'A simple and intuitive yet powerful volleyball scoreboard that allows you to keep track of scores and timeouts, for any type of match.',
   },
   {
     title: 'Volleyball Match Analysis',
     url: 'https://analisevolei.pt',
     displayUrl: 'analisevolei.pt',
+    description: 'A tool to analyze volleyball matches, focusses on understanding where your team failed and where it needs to improve, by providing detailed statistics and graphs about the match.',
   },
   {
     title: 'Spike and Vertical Tracking',
     url: 'https://spiketracking.volei.pt',
     displayUrl: 'spiketracking.volei.pt',
+    description: 'A tool to track the height of spikes and vertical jumps, to help players improve their performance. Just upload a video of the spike or jump and get detailed statistics about it.',
   },
 ]
 
 function App() {
+  const [popup, setPopup] = useState(null);
+
+  const handleQuestionMarkClick = (e, description) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setPopup(description);
+  }
+
   return (
     <div className="container">
       <header>
@@ -33,11 +45,25 @@ function App() {
             href={link.url}
             className="link-button"
           >
-            <span className="button-title">{link.title}</span>
-            <span className="button-url">{link.displayUrl}</span>
+            <div className="button-content">
+              <span className="button-title">{link.title}</span>
+              <span className="button-url">{link.displayUrl}</span>
+            </div>
+            <button className="question-mark" onClick={(e) => handleQuestionMarkClick(e, link.description)}>
+              ?
+            </button>
           </a>
         ))}
       </main>
+
+      {popup && (
+        <div className="popup-overlay" onClick={() => setPopup(null)}>
+          <div className="popup" onClick={(e) => e.stopPropagation()}>
+            <p>{popup}</p>
+            <button onClick={() => setPopup(null)}>Close</button>
+          </div>
+        </div>
+      )}
 
       <footer>
         <p>&copy; {new Date().getFullYear()} volei.pt</p>
