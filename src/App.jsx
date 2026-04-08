@@ -46,12 +46,17 @@ function App() {
             className="link-button"
           >
             <div className="button-content">
-              <span className="button-title">{link.title}</span>
+              <div className="button-header">
+                <span className="button-title">{link.title}</span>
+                <button className="question-mark" onClick={(e) => handleQuestionMarkClick(e, link.description)}>
+                  ?
+                </button>
+              </div>
               <span className="button-url">{link.displayUrl}</span>
             </div>
-            <button className="question-mark" onClick={(e) => handleQuestionMarkClick(e, link.description)}>
-              ?
-            </button>
+            <span className="button-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         ))}
       </main>
