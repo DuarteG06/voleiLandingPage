@@ -20,6 +20,12 @@ const links = [
     displayUrl: 'spiketracking.volei.pt',
     description: 'A tool to track the height of spikes and vertical jumps, to help players improve their performance. Just upload a video of the spike or jump and get detailed statistics about it.',
   },
+  {
+    title: 'Volleyball Sketch',
+    url: 'https://volleysketch.volei.pt/',
+    displayUrl: 'volleysketch.volei.pt',
+    description: 'A tool to sketch volleyball plays and ideas visually, making it easier to plan, explain, and share tactics.',
+  },
 ]
 
 function App() {
