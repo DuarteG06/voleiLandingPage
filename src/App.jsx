@@ -77,7 +77,7 @@ function App() {
       )}
 
       <footer>
-        <p className="tagline">Designed by Duarte Graça</p>
+        <p className="tagline">Made by Duarte Graça</p>
         <p>&copy; {new Date().getFullYear()} volei.pt</p>
       </footer>
     </div>
